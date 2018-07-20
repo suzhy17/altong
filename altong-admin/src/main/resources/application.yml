@@ -1,0 +1,31 @@
+spring:
+  profiles:
+    active: h2
+  mvc:
+    favicon:
+      enabled: false
+  thymeleaf:
+    cache: false
+  datasource:
+    tomcat:
+      max-active: 10
+      max-idle: 5
+      min-idle: 2
+      max-wait: -1
+      initial-size: 5
+      remove-abandoned: true
+      remove-abandoned-timeout: 60
+      validation-query: SELECT 1 FROM DUAL
+      test-on-return: true
+      test-while-idle: true
+      time-between-eviction-runs-millis: 60000
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+server:
+  error:
+    whitelabel:
+      enabled: false

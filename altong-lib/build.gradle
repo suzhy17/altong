@@ -1,0 +1,29 @@
+bootRepackage {
+    enabled = false
+}
+
+jar {
+    baseName = 'altong-lib'
+    version = '1.0.0-SNAPSHOT'
+}
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-security')
+    compile('org.springframework.boot:spring-boot-starter-jdbc')
+
+    // compile('org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16')
+
+    compile('org.mariadb.jdbc:mariadb-java-client:2.1.2')
+
+    compile('commons-codec:commons-codec:1.11')
+    compile('org.modelmapper:modelmapper:1.1.1')
+	compile('org.springframework.boot:spring-boot-starter-mail')
+
+    compile("org.springframework.boot:spring-boot-devtools")
+//    compile('org.json:json:20171018')
+
+    testCompile('com.h2database:h2')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}

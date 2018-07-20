@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="layout/default">
+
+<head>
+
+	<title th:remove="all">ALTONG :: 통합 알림 서비스242334234</title>
+	<meta th:remove="all" charset="utf-8" />
+	<meta th:remove="all" http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta th:remove="all" name="viewport" content="initial-scale=0.7, user-scalable=yes, maximum-scale=1" />
+	<meta th:remove="all" name="description" content="" />
+	<meta th:remove="all" name="author" content="" />
+
+	<link th:remove="all" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+	<link th:remove="all" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"  />
+	<link th:remove="all" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css" integrity="sha384-v2Tw72dyUXeU3y4aM2Y0tBJQkGfplr39mxZqlTBDUZAb9BGoC40+rdFCG0m10lXk" crossorigin="anonymous" />
+	<link th:remove="all" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/fontawesome.css" integrity="sha384-q3jl8XQu1OpdLgGFvNRnPdj5VIlCvgsDQTQB6owSOHWlAurxul7f+JpUOVdAiJ5P" crossorigin="anonymous" />
+	<link th:remove="all" rel="stylesheet" href="/webjars/jquery-ui/1.12.1/jquery-ui.min.css" />
+	<link th:remove="all" rel="stylesheet" href="../../static/css/bootstrap/style.css?1" />
+	<script th:remove="all" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="icon-bar"></span> <span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" title="메인으로" href="/"><i class="fa fa-bell" aria-hidden="true"></i> 통합 알림 서비스</a>
+		</div>
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="/projects">프로젝트 관리<b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="/services"><i class="glyphicon glyphicon-th-large"></i> 서비스 관리</a></li>
+						<li><a href="/projects"><i class="glyphicon glyphicon-th"></i> 프로젝트 관리</a></li>
+						<li><a href="/members"><i class="glyphicon glyphicon-user"></i> 알림 대상 관리</a></li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="/alerts">알림 관리<b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="/alerts"><i class="glyphicon glyphicon-th-large"></i> 알림 내역</a></li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="/statistics/daily">통계 관리<b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="/statistics/daily"><i class="glyphicon glyphicon-th-large"></i> 일별 통계</a></li>
+						<li><a href="/statistics/monthly"><i class="glyphicon glyphicon-th-large"></i> 월별 통계</a></li>
+					</ul>
+				</li>
+				<li><a title="운영자 관리" href="/admins">운영자 관리 </a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#" id="userInfoMod" title="정보 변경"><span class="glyphicon glyphicon-user"></span> <span>suzhy</span> </a></li>
+				<li><a href="#" id="passwordMod" title="비밀번호 변경"><i class="fa fa-key" aria-hidden="true"></i></a></li>
+				<li><a title="로그아웃" href="/logout"><span class="glyphicon glyphicon-log-out"></span></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div class="container" id="body" layout:fragment="content">
+	<h3><i class="fa fa-square" aria-hidden="true"></i> 운영자 관리</h3>
+	<br/>
+
+	<div class="panel panel-default panel-table">
+		<div class="panel-heading">
+			<div class="row">
+				<div class="col col-xs-6">
+					<h3 class="panel-title"><i class="fa fa-list-ul" aria-hidden="true"></i></h3>
+				</div>
+				<div class="col col-xs-6 text-right">
+					<button type="button" id="adminAdd" class="btn btn-primary btn-sm">
+						<i class="fa fa-user-plus" aria-hidden="true"></i> 운영자 추가
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="panel-body">
+			<table class="table table-striped table-bordered table-list">
+				<thead>
+				<tr>
+					<th>ID</th>
+					<th>운영자명</th>
+					<th>관리자</th>
+					<th>일반 사용자</th>
+					<th colspan="2">담당 서비스</th>
+					<th>최종 로그인</th>
+					<th>로그인 실패</th>
+					<th>임시 비밀번호 여부</th>
+					<th><i class="fa fa-cog"></i></th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr th:each="item: ${pageResult.content}">
+					<td class="text-center"><span th:text="${item.userId}">adminid</span></td>
+					<td class="text-center"><span th:text="${item.name}">송혜교</span></td>
+					<td class="text-center">
+						<span class="glyphicon glyphicon-ok" aria-hidden="true" th:if="${#strings.contains(item.authority,'ADMIN')}"></span>
+					</td>
+					<td class="text-center">
+						<span class="glyphicon glyphicon-ok" aria-hidden="true" th:if="${#strings.contains(item.authority,'USER')}"></span>
+					</td>
+					<td class="text-center">
+						<p th:each="service,iterStat : ${item.services}" class="slim" style="line-height: 100%">
+							<a th:href="@{'/projects?serviceId=' + ${service.serviceId}}"
+							   th:text="${service.serviceName}"
+							   th:class="${iterStat.even} ? 'text-info' : 'text-success'"
+							   th:title="|${service.serviceName} 모아보기|">EMS</a>
+						</p>
+					</td>
+					<td class="text-center">
+						<button type="button" name="adminServicesModalOpen" class="btn btn-sm btn-default" th:value="${item.userId}">관리</button>
+					</td>
+					<td class="text-center"><span th:text="${@textFormatter.datetime(item.lastLoginDate, 'yyyy-MM-dd HH:mm:ss')}">2017-01-01 00:00:00</span></td>
+					<td class="text-center"><span th:text="|${#numbers.formatDecimal(item.loginFailCount,1,0,'COMMA')} 건|">4건</span></td>
+					<td class="text-center">
+						<span class="glyphicon glyphicon-ok" aria-hidden="true" th:if="${item.passwordGroup.tempPassword}"></span>
+					</td>
+					<td class="text-center">
+						<button type="button" name="adminMod" class="btn btn-sm btn-default" title="정보 변경" th:value="${item.userId}"><i class="fa fa-pencil"></i></button>
+						<button type="button" name="passwordReset" class="btn btn-sm btn-default" title="임시 비밀번호 발급" th:value="${item.userId}"><i class="fa fa-key" aria-hidden="true"></i></button>
+						<button type="button" name="otpReset" class="btn btn-sm btn-default" title="OTP초기화" th:value="${item.userId}"><i class="fa fa-google" aria-hidden="true"></i></button>
+						<button type="button" name="delete" class="btn btn-sm btn-danger" title="삭제" th:value="${item.userId}"><i class="fa fa-trash"></i></button>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="panel-footer">
+			<div th:include="layout/pagination :: navi(${pageResult}, '/admins')">
+			</div>
+		</div>
+	</div>
+</div>
+
+<th:block layout:fragment="javascript">
+
+<script th:src="@{'/js/admins.js'}"></script>
+
+</th:block>
+
+</body>
+</html>

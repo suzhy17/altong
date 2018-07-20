@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="layout/default">
+
+<body>
+
+<div class="container" id="body" layout:fragment="content">
+	<h3 th:text="${adminUser}? '운영자 정보 변경' : '운영자 등록'">운영자 정보 변경/등록</h3>
+
+	<form id="admin-form" method="post">
+		<input type="hidden" id="modifyYn" th:value="${adminUser} ? 'Y' : 'N'" />
+		<div class="form-group">
+			<label for="userId">ID</label>
+			<input type="text" class="form-control" id="userId" name="userId" value="adminUserId" th:disabled="${adminUser}" th:value="${adminUser} ? ${adminUser.userId}" />
+		</div>
+		<div class="form-group">
+			<label for="name">운영자명</label>
+			<input type="text" class="form-control" id="name" name="name" value="adminUserName"  th:disabled="${adminUser}" th:value="${adminUser} ? ${adminUser.name}" />
+		</div>
+		<div class="form-group">
+			<label for="mobileNo">휴대폰번호</label>
+			<input type="number" class="form-control" id="mobileNo" name="mobileNo" value="01012345678" th:value="${adminUser} ? ${adminUser.mobileNo}" />
+		</div>
+		<div class="form-group">
+			<label for="email">이메일</label>
+			<input type="email" class="form-control" id="email" name="email" value="unityalert@altong.co.kr" th:value="${adminUser} ? ${adminUser.email}" />
+		</div>
+		<div class="form-group text-right">
+			<button class="btn btn-primary" type="submit">저장</button>
+		</div>
+	</form>
+</div>
+
+<script type="text/javascript" layout:fragment="javascript">
+	$(document).ready(function() {
+		$('#admin-form').submit(function() {
+			var modifyYn = $('#modifyYn').val();
+
+			// 생성
+			if (modifyYn === 'N') {
+				$.ajax({
+					method: 'POST',
+					url: '/admins',
+					data: $(this).serialize()
+				}).done(function () {
+					alert('생성되었습니다.');
+					location.href = '/admins';
+				});
+			}
+			// 수정
+			else {
+				$.ajax({
+					method: 'PUT',
+					url: '/admins/' + $('#userId').val(),
+					data: {
+						mobileNo: $('#mobileNo').val(),
+						email: $('#email').val()
+					}
+				}).done(function () {
+					alert('변경되었습니다.');
+					location.href = '/admins';
+				});
+			}
+
+			return false;
+		});
+	});
+</script>
+
+</body>
+</html>

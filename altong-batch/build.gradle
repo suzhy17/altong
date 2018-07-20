@@ -1,0 +1,22 @@
+jar {
+    baseName = 'altong-batch'
+    version = '1.0.0-SNAPSHOT'
+}
+
+dependencies {
+    compile project(':altong-lib')
+
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+
+    // compile('org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16')
+
+    compile('org.springframework.boot:spring-boot-starter-jdbc')
+    compile('org.mariadb.jdbc:mariadb-java-client:2.1.2')
+
+    compile("org.springframework.boot:spring-boot-devtools")
+
+	compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile('com.h2database:h2')
+    
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}

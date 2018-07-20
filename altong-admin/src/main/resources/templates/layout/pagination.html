@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<div th:fragment="navi (page, uri)">
+	<div class="row" th:if="${page.totalPages > 0}">
+		<div class="col col-xs-4">
+			<p th:text="|Page ${page.number + 1} of ${page.totalPages}|"></p>
+		</div>
+		<div class="col col-xs-8">
+			<ul class="pagination pull-right">
+				<li th:class="${page.number eq 0} ? 'disabled' : ''">
+					<a th:if="${not page.first}" th:href="@{${uri}(page=${page.number-1},size=${page.size})}"><i class="glyphicon glyphicon-chevron-left"></i></a>
+					<a th:if="${page.first}" href="javascript:void(0);"><i class="glyphicon glyphicon-chevron-left"></i></a>
+				</li>
+				<li th:each="pageNo : ${#numbers.sequence(0, page.totalPages - 1)}" th:class="${page.number eq pageNo}? 'active' : ''">
+					<a th:if="${page.number  eq pageNo}" href="javascript:void(0);">
+						<span th:text="${pageNo + 1}"></span>
+					</a>
+					<a th:if="${not (page.number  eq pageNo)}" th:href="@{${uri}(page=${pageNo},size=${page.size})}">
+						<span th:text="${pageNo + 1}"></span>
+					</a>
+				</li>
+				<li th:class="${page.number + 1 ge page.totalPages} ? 'disabled' : ''">
+					<a th:if="${not page.last}" th:href="@{${uri}(page=${page.number+1},size=${page.size})}"><i class="glyphicon glyphicon-chevron-right"></i></a>
+					<a th:if="${page.last}" href="javascript:void(0);"><i class="glyphicon glyphicon-chevron-right"></i></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

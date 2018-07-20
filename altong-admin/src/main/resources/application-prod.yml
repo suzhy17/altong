@@ -1,0 +1,18 @@
+spring:
+  thymeleaf:
+    cache: true
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://127.0.0.1:3306/unityalert_db
+    username: uauser
+    password: xhdgkqdkfflatltmxpa4321
+    initialize: false
+  jpa:
+    hibernate:
+      ddl-auto: none
+      
+server:
+  port: 13108
+
+logging:
+  config: classpath:logback-spring-prod.xml

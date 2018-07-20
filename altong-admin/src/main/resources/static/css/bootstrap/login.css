@@ -1,0 +1,27 @@
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+
+.form-login {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-login .form-login-heading {
+  margin-bottom: 20px;
+}
+
+.modal-header {
+  text-align: center;
+}
+
+.modal-header .bi {
+  margin: 15px auto;
+/*  background: url('https://media.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAAlgAAAAJGU5YTdmN2I3LTU3YjYtNDVmOS04ZjhlLTMzZTI5NjM1OTNmOA.png');*/
+  width: 399px;
+  height: 158px;
+  background-repeat: no-repeat;
+}
+

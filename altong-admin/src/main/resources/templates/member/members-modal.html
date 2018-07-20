@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="layout/default">
+
+<body>
+
+<div layout:fragment="content">
+	<!-- Modal -->
+	<div class="modal fade" id="membersModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel"><i class="fa fa-user-plus" aria-hidden="true"></i> 멤버 추가</h4>
+				</div>
+				<div class="modal-body">
+					<input type="hidden" id="projectNo" th:value="${projectNo}" />
+					<div class="pre-scrollable">
+						<table class="table table-striped table-bordered table-list">
+							<thead>
+							<tr>
+								<th class="text-center active">No</th>
+								<th class="text-center active">사번</th>
+								<th class="text-center active">이름</th>
+								<th class="text-center active">추가</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr th:each="item: ${members}">
+								<td class="text-center"><span th:text="${item.memberNo}">1</span></td>
+								<td class="text-center"><span th:text="${item.staffNo}">3075</span></td>
+								<td class="text-center"><span th:text="${item.memberName}">한영수</span></td>
+								<td class="text-center">
+									<button type="button" name="projectMemberAdd" class="btn btn-xs btn-success btn-block" th:attr="data-member-no=${item.memberNo}"><i class="fa fa-plus-square" aria-hidden="true"></i> 추가</button>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" id="closeMembersModal" class="btn btn-default">확인</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--// Modal -->
+</div>
+
+</body>
+</html>

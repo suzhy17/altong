@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="layout/default">
+
+<body>
+
+<div layout:fragment="content">
+	<!-- Modal -->
+	<div class="modal fade" id="projectFormModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel"><i class="fa fa-user-plus" aria-hidden="true"></i> <span th:text="${project} ? '프로젝트 정보 변경' : '프로젝트 등록'">프로젝트 등록</span></h4>
+				</div>
+				<div class="modal-body">
+					<form id="projectForm" method="post">
+						<input type="hidden" id="modifyYn" th:value="${project} ? 'Y' : 'N'" />
+						<input type="hidden" id="projectNo" th:value="${project} ? ${project.projectNo}" />
+						<div class="form-group">
+							<label for="serviceId">서비스 선택</label>
+							<select class="form-control" id="serviceId" name="serviceId">
+								<option value="">선택</option>
+								<option value="ems" th:each="service : ${services}" th:value="${service.serviceId}" th:text="|${service.serviceId} - ${service.serviceName}|" th:selected="${project} ? ${service.serviceId eq project.daouService.serviceId}">포토에디터</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="projectId">프로젝트 ID</label>
+							<input type="text" class="form-control" id="projectId" name="projectId" value="프로젝트 ID" th:value="${project} ? ${project.projectId}" th:disabled="${project}" />
+						</div>
+						<div class="form-group">
+							<label for="projectName">프로젝트명</label>
+							<input type="text" class="form-control" id="projectName" name="projectName" value="프로젝트 명" th:value="${project} ? ${project.projectName}" />
+						</div>
+						<div class="form-group">
+							<label for="sendType">1차 발송 선택</label>
+							<select class="form-control" id="sendType" name="sendType">
+								<option value="">선택</option>
+								<option value="ems" th:each="sendType : ${T(kr.co.daou.sdev.altong.domain.project.SendType).values()}" th:value="${sendType}" th:text="${sendType.name}" th:selected="${project} ? ${sendType eq project.sendType}">안드로이드</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="sendType">2차 발송 선택</label>
+							<select class="form-control" id="resendType" name="resendType">
+								<option value="">선택</option>
+								<option value="ems" th:each="sendType : ${T(kr.co.daou.sdev.altong.domain.project.SendType).values()}" th:value="${sendType}" th:text="${sendType.name}" th:selected="${project} ? ${sendType eq project.resendType}">안드로이드</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="sendLimitYn1">발송 제한</label>
+							<div class="radio">
+								<label>
+									<input type="radio" name="sendLimitYn" id="sendLimitYn1" value="1" th:checked="${project} ? ${project.sendLimitYn}" /> 예
+								</label>
+							</div>
+							<div class="radio">
+								<label>
+									<input type="radio" name="sendLimitYn" id="sendLimitYn2" value="0" th:checked="${project} ? ${!project.sendLimitYn}" /> 아니오
+								</label>
+							</div>
+						</div>
+						<button type="submit" class="btn btn-primary btn-block">저장</button>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--// Modal -->
+</div>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>ALTONG :: 통합 알림 서비스</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+	<link rel="stylesheet" href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+<body>
+<div class="container">
+	<!-- 테스트용 -->
+	<div id="loginModal" class="modal show" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="bi">
+						ALTONG
+						<br /><br /><br /><br />
+						<br /><br /><br /><br />
+					</div>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<form method="post" th:action="@{/login-process}" class="form col-md-offset-2 col-md-12 center-block" role="form">
+							<div class="form-group">
+								<label for="userId">로그인 ID</label>
+								<input type="text" class="form-control" name="userId" id="userId" placeholder="아이디" autofocus="autofocus" />
+							</div>
+							<div class="form-group">
+								<label for="password">Password</label>
+								<input type="password" class="form-control" name="password" id="password" placeholder="비밀번호" autocomplete="off" />
+							</div>
+							<div class="form-group">
+								<div class="col-md-6">
+									<button class="btn btn-lg btn-primary btn-block" type="submit">로그인</button>
+								</div>
+								<div class="col-md-6">
+									<button class="btn btn-lg btn-warning btn-block" type="reset">초기화</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<br/><br/>
+					<div class="row">
+						<div th:if="${loginResult}" class="alert alert-danger" role="alert">
+							<strong>로그인 실패!</strong>
+							<p th:text="${loginResult.message}">에러메시지</p>
+							<p th:if="${loginResult == T(kr.co.daou.sdev.altong.security.LoginResultType).BAD_CREDENTIALS || loginResult == T(kr.co.daou.sdev.altong.security.LoginResultType).LOCKED}">
+								<button type="button" name="tempPasswordSend" class="btn btn-default" th:value="${userId}" data-send-type="email">이메일로 임시비밀번호 발급</button>
+								<button type="button" name="tempPasswordSend" class="btn btn-default" th:value="${userId}" data-send-type="mobile">휴대폰으로 임시비밀번호 발급</button>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script th:src="@{/webjars/jquery/1.12.0/jquery.min.js}"></script>
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('button[name="tempPasswordSend"]').click(function () {
+			var sendType = $(this).data('sendType'),
+				userId = $(this).val();
+			alert('준비중입니다. userId=' + userId + ', sendType=' + sendType);
+		});
+	});
+
+</script>
+</body>
+</html>

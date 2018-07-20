@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="layout/default">
+
+<body>
+
+<div class="container" id="body" layout:fragment="content">
+	<h3><i class="fa fa-square" aria-hidden="true"></i> 알림 대상 관리</h3>
+	<br/>
+
+	<div class="panel panel-default panel-table">
+		<div class="panel-heading">
+			<div class="row">
+				<div class="col col-xs-6">
+					<h3 class="panel-title"><i class="fa fa-list-ul" aria-hidden="true"></i></h3>
+				</div>
+				<div class="col col-xs-6 text-right">
+					<button type="button" id="memberAdd" class="btn btn-primary btn-sm">
+						<i class="fa fa-user-plus" aria-hidden="true"></i> 멤버 등록
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="panel-body">
+			<table class="table table-striped table-bordered table-list">
+				<thead>
+					<tr>
+						<th class="text-center">No</th>
+						<th class="text-center">사번</th>
+						<th class="text-center">멤버명</th>
+						<th class="text-center">이메일</th>
+						<th class="text-center">휴대폰번호</th>
+						<th class="text-center">푸시</th>
+						<th class="text-center">상태</th>
+						<th><i class="fa fa-cog"></i></th>
+					</tr>
+				</thead>
+				<tbody class="table-hover">
+					<tr th:each="item: ${pageResult.content}">
+						<td class="text-center"><span th:text="${item.memberNo}">1</span></td>
+						<td class="text-center"><span th:text="${item.staffNo}">1234</span></td>
+						<td class="text-center"><span th:text="${item.memberName}">홍길동</span></td>
+						<td class="text-center"><span th:text="${item.email}">test@test.com</span></td>
+						<td class="text-center"><span th:text="${item.mobileNo}">010-1111-4444</span></td>
+						<td class="text-center"><span th:text="${item.smartPhone} ? ${item.smartPhone.smartPhoneType} : '사용안함'">IPHONE</span></td>
+						<td class="text-center">
+							<span class="glyphicon glyphicon-ok" aria-hidden="true" th:if="${item.memberStatus}"></span>
+						</td>
+						<td class="text-center">
+							<button type="button" name="memberMod" class="btn btn-sm btn-default" title="정보 변경" th:value="${item.memberNo}"><i class="fa fa-pencil"></i></button>
+							<button type="button" name="memberDel" class="btn btn-sm btn-danger" title="삭제" th:value="${item.memberNo}"><i class="fa fa-trash"></i></button>
+							<button type="button" name="memberAlertModalOpen" class="btn btn-sm btn-success" title="테스트 발송" th:value="${item.memberNo}"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="panel-footer">
+			<div th:include="layout/pagination :: navi(${pageResult}, '/members')">
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<script type="text/javascript" layout:fragment="javascript">
+	$(document).ready(function() {
+		"use strict";
+
+		$('button[name="memberDel"]').click(function() {
+			if (!confirm('정말 삭제하시겠습니까?')) {
+				return false;
+			}
+
+			$.ajax({
+				method: 'DELETE',
+				url: '/members/' + $(this).val()
+			}).done(function () {
+				alert('삭제되었습니다.');
+				location.reload();
+			});
+		});
+
+
+
+	});
+</script>
+
+</body>
+</html>

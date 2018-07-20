@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://127.0.0.1:3306/unityalert_db
+    username: uauser
+    password: xhdgkqdkfflatltmxpa4321
+  jpa:
+    hibernate:
+      ddl-auto: none
+

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="layout/default">
+
+<body>
+
+<div class="container" id="body" layout:fragment="content">
+	<h3 th:text="${service} ? '서비스 정보 변경' : '서비스 등록'">서비스 변경/등록</h3>
+
+	<form id="service-form" method="post">
+		<input type="hidden" id="modifyYn" th:value="${service} ? 'Y' : 'N'" />
+		<div class="form-group">
+			<label for="serviceId">서비스 ID</label>
+			<input type="text" class="form-control" id="serviceId" name="serviceId" value="serviceId" th:disabled="${service}" th:value="${service} ? ${service.serviceId}" />
+		</div>
+		<div class="form-group">
+			<label for="serviceName">서비스명</label>
+			<input type="text" class="form-control" id="serviceName" name="serviceName" value="serviceName"  th:value="${service} ? ${service.serviceName}" />
+		</div>
+		<div class="form-group text-right">
+			<button class="btn btn-primary" type="submit">저장</button>
+		</div>
+	</form>
+</div>
+
+<script type="text/javascript" layout:fragment="javascript">
+	$(document).ready(function() {
+		$('#service-form').submit(function() {
+			var modifyYn = $('#modifyYn').val();
+
+			// 생성
+			if (modifyYn === 'N') {
+				$.ajax({
+					method: 'POST',
+					url: '/services',
+					data: $(this).serialize()
+				}).done(function () {
+					alert('생성되었습니다.');
+					location.href = '/services';
+				});
+			}
+			// 수정
+			else {
+				$.ajax({
+					method: 'PUT',
+					url: '/services/' + $('#serviceId').val(),
+					data: $(this).serialize()
+				}).done(function () {
+					alert('변경되었습니다.');
+					location.href = '/services';
+				});
+			}
+
+			return false;
+		});
+	});
+</script>
+
+</body>
+</html>

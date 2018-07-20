@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>통합 알림 시스템 :: 관리자</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div th:unless="${#lists.isEmpty(projects)}">
+	<table>
+		<thead>
+		<tr>
+			<th>프로젝트 번호</th>
+			<th>프로젝트 명</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr th:each="project: ${projects}">
+			<td th:text="${project.memberNo}">projectNo</td>
+			<td th:text="${project.name}">projectName</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+</body>
+</html>

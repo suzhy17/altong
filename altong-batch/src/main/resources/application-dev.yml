@@ -1,0 +1,11 @@
+spring:
+  thymeleaf:
+    cache: false
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://123.2.134.36:3306/unityalert_db
+    username: altong
+    password: dkfxhd4#2!
+  jpa:
+    hibernate:
+      ddl-auto: update

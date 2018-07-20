@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="layout/default">
+
+<body>
+
+<div layout:fragment="content">
+	<!-- Modal -->
+	<div class="modal fade" id="adminFormModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel"><span class="glyphicon glyphicon-user"></span> <span th:text="${adminUser}? '운영자 정보 변경' : '운영자 등록'">운영자 정보 변경/등록</span></h4>
+				</div>
+				<div class="modal-body">
+					<form id="adminForm" method="post">
+						<input type="hidden" id="modifyYn" th:value="${adminUser} ? 'Y' : 'N'" />
+						<div class="form-group">
+							<label for="userId">ID</label>
+							<input type="text" class="form-control" id="userId" name="userId" value="adminUserId" th:disabled="${adminUser}" th:value="${adminUser} ? ${adminUser.userId}" />
+						</div>
+						<div class="form-group">
+							<label for="name">운영자명</label>
+							<input type="text" class="form-control" id="name" name="name" value="adminUserName"  th:disabled="${adminUser}" th:value="${adminUser} ? ${adminUser.name}" />
+						</div>
+						<div class="form-group">
+							<label for="mobileNo">휴대폰번호</label>
+							<input type="number" class="form-control" id="mobileNo" name="mobileNo" value="01012345678" th:value="${adminUser} ? ${adminUser.mobileNo}" />
+						</div>
+						<div class="form-group">
+							<label for="email">이메일</label>
+							<input type="email" class="form-control" id="email" name="email" value="unityalert@altong.co.kr" th:value="${adminUser} ? ${adminUser.email}" />
+						</div>
+						<div class="form-group text-right">
+							<button class="btn btn-primary btn-block" type="submit">저장</button>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--// Modal -->
+</div>
+
+</body>
+</html>

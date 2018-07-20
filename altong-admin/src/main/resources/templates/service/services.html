@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="layout/default">
+
+<body>
+
+<div class="container" id="body" layout:fragment="content">
+	<h3><i class="fa fa-square" aria-hidden="true"></i> 서비스 관리</h3>
+	<br/>
+
+	<div class="panel panel-default panel-table">
+		<div class="panel-heading">
+			<div class="row">
+				<div class="col col-xs-6">
+					<h3 class="panel-title"><i class="fa fa-list-ul" aria-hidden="true"></i></h3>
+				</div>
+				<div class="col col-xs-6 text-right">
+					<a th:href="@{'/services?write'}" class="btn btn-sm btn-primary">서비스 등록</a>
+				</div>
+			</div>
+		</div>
+		<div class="panel-body">
+			<table class="table table-striped table-bordered table-list">
+				<thead>
+				<tr>
+					<th>서비스 ID (서비스명)</th>
+					<th>프로젝트 수</th>
+					<th>발송 대상 수</th>
+					<th>서비스 운영자</th>
+					<th>상태</th>
+					<th><i class="fa fa-cog"></i></th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr th:each="item: ${pageResult.content}">
+					<td class="text-center"><a th:href="@{'/projects?serviceId=' + ${item.serviceId}}" th:text="|${item.serviceId} (${item.serviceName})|" th:title="|${item.serviceName} 모아보기|">뿌리오</a></td>
+					<td class="text-center"><span th:text="|0 건|">124건</span></td>
+					<td class="text-center"><span th:text="|0 건|">443건</span></td>
+					<td class="text-center">
+						<button type="button" name="adminUsers" class="btn btn-sm btn-default" th:value="${item.serviceId}" th:text="|${item.adminUserCount} 명|">5 명</button>
+					</td>
+					<td class="text-center">
+						<button type="button" name="statusMod" class="btn btn-sm" title="상태 변경" data-toggle="play-btn" th:value="${item.serviceId}" th:attr="data-status=${item.serviceStatus}"></button>
+					</td>
+					<td class="text-center">
+						<a href="#" class="btn btn-sm btn-default" title="정보 변경" th:href="|/services/${item.serviceId}|"><i class="fa fa-pencil"></i></a>
+						<button type="button" name="serviceDel" class="btn btn-sm btn-danger" title="삭제" th:value="${item.serviceId}"><i class="fa fa-trash"></i></button>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="panel-footer">
+			<div th:include="layout/pagination :: navi(${pageResult}, '/services')">
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" layout:fragment="javascript">
+	$(document).ready(function() {
+		"use strict";
+
+		$('button[name="adminUsers"]').click(function() {
+			var serviceId = $(this).val();
+
+			alert('준비중입니다.');
+		});
+
+		$('button[name="serviceDel"]').click(function() {
+			var serviceId = $(this).val();
+
+			if (!confirm(serviceId + ' 서비스를 삭제하겠습니까?')) {
+				return;
+			}
+
+			$.ajax({
+				method: 'DELETE',
+				url: '/services/'+serviceId
+			}).done(function() {
+				alert("삭제되었습니다.");
+				location.reload();
+			});
+		});
+
+		$('button[name="statusMod"]').click(function() {
+			var serviceId = $(this).val(),
+				status = $(this).data('status');
+
+			var msg = status ? '중지' : '활성화';
+
+			if (!confirm(serviceId + ' 서비스를 ' + msg + '상태로 변경하겠습니까?')) {
+				return;
+			}
+
+			$.ajax({
+				method: 'PUT',
+				url: '/services/' + serviceId + '/status',
+				data: {
+					serviceStatus: !status
+				}
+			}).done(function () {
+				alert("변경되었습니다.");
+				location.reload();
+			});
+		});
+	});
+</script>
+
+</body>
+</html>
