@@ -1,5 +1,6 @@
 package kr.co.daou.sdev.altong.domain.project;
 
+import kr.co.daou.sdev.altong.enumeration.SmartPhoneType;
 import kr.co.daou.sdev.altong.exception.AltongException;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

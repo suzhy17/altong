@@ -2,7 +2,7 @@ package kr.co.daou.sdev.altong.service;
 
 import kr.co.daou.sdev.altong.domain.project.Member;
 import kr.co.daou.sdev.altong.domain.project.Project;
-import kr.co.daou.sdev.altong.domain.project.SendType;
+import kr.co.daou.sdev.altong.enumeration.SendType;
 import kr.co.daou.sdev.altong.domain.project.UnityMsgContents;
 import kr.co.daou.sdev.altong.exception.AltongException;
 import kr.co.daou.sdev.altong.send.UnityMsg;

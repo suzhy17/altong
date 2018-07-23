@@ -1,7 +1,7 @@
 package kr.co.daou.sdev.altong.controller.admin;
 
 import kr.co.daou.sdev.altong.domain.admin.AdminUser;
-import kr.co.daou.sdev.altong.domain.project.SendType;
+import kr.co.daou.sdev.altong.enumeration.SendType;
 import kr.co.daou.sdev.altong.service.AlertService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -2,7 +2,7 @@ package kr.co.daou.sdev.altong.dto.alert;
 
 import javax.validation.constraints.NotNull;
 
-import kr.co.daou.sdev.altong.domain.project.SendType;
+import kr.co.daou.sdev.altong.enumeration.SendType;
 import lombok.Data;
 @Data
 public class AlertResultDto {

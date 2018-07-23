@@ -7,10 +7,10 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import kr.co.daou.sdev.altong.domain.alert.AlertMaster;
-import kr.co.daou.sdev.altong.domain.alert.AlertStatusType;
+import kr.co.daou.sdev.altong.enumeration.AlertStatusType;
 import kr.co.daou.sdev.altong.domain.project.Member;
 import kr.co.daou.sdev.altong.domain.project.Project;
-import kr.co.daou.sdev.altong.domain.project.SendType;
+import kr.co.daou.sdev.altong.enumeration.SendType;
 import kr.co.daou.sdev.altong.domain.project.UnityMsgContents;
 import kr.co.daou.sdev.altong.dto.alert.AlertResultDto;
 import kr.co.daou.sdev.altong.send.DaouOfficeUnityMsgImpl;

@@ -9,7 +9,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import kr.co.daou.sdev.altong.LibApplication;
-import kr.co.daou.sdev.altong.domain.alert.AlertStatusType;
+import kr.co.daou.sdev.altong.enumeration.AlertStatusType;
 import kr.co.daou.sdev.altong.dto.alert.AlertMasterDto;
 import lombok.extern.slf4j.Slf4j;
 

@@ -4,7 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import kr.co.daou.sdev.altong.AltongConst;
 import kr.co.daou.sdev.altong.domain.alert.AlertMaster;
-import kr.co.daou.sdev.altong.domain.alert.AlertStatusType;
+import kr.co.daou.sdev.altong.enumeration.AlertStatusType;
 import kr.co.daou.sdev.altong.send.UnityMsg;
 import kr.co.daou.sdev.altong.service.MsgSendService;
 import lombok.extern.slf4j.Slf4j;

@@ -1,4 +1,4 @@
-package kr.co.daou.sdev.altong.domain.converter;
+package kr.co.daou.sdev.altong.converter;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;

@@ -3,7 +3,7 @@ package kr.co.daou.sdev.altong.dto.alert;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import kr.co.daou.sdev.altong.domain.alert.AlertStatusType;
+import kr.co.daou.sdev.altong.enumeration.AlertStatusType;
 import lombok.Data;
 @Data
 public class AlertMasterDto {

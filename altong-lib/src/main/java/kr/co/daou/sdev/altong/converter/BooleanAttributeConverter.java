@@ -1,4 +1,4 @@
-package kr.co.daou.sdev.altong.domain.converter;
+package kr.co.daou.sdev.altong.converter;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

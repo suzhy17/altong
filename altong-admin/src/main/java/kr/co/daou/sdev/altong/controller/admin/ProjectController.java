@@ -3,7 +3,7 @@ package kr.co.daou.sdev.altong.controller.admin;
 import kr.co.daou.sdev.altong.domain.admin.AdminUser;
 import kr.co.daou.sdev.altong.domain.project.DaouService;
 import kr.co.daou.sdev.altong.domain.project.Project;
-import kr.co.daou.sdev.altong.domain.project.SendType;
+import kr.co.daou.sdev.altong.enumeration.SendType;
 import kr.co.daou.sdev.altong.service.DaouServiceService;
 import kr.co.daou.sdev.altong.service.ProjectService;
 import lombok.extern.slf4j.Slf4j;

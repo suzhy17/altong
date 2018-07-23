@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.co.daou.sdev.altong.domain.alert.AlertMaster;
-import kr.co.daou.sdev.altong.domain.alert.AlertStatusType;
+import kr.co.daou.sdev.altong.enumeration.AlertStatusType;
 import kr.co.daou.sdev.altong.domain.project.Project;
 import kr.co.daou.sdev.altong.dto.alert.AlertMasterDto;
 import kr.co.daou.sdev.altong.exception.AltongException;

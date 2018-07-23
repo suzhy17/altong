@@ -2,7 +2,7 @@ package kr.co.daou.sdev.altong.mapper;
 
 import kr.co.daou.sdev.altong.LibApplication;
 import kr.co.daou.sdev.altong.domain.project.Member;
-import kr.co.daou.sdev.altong.domain.project.SmartPhoneType;
+import kr.co.daou.sdev.altong.enumeration.SmartPhoneType;
 import kr.co.daou.sdev.altong.dto.project.MemberDto;
 import kr.co.daou.sdev.altong.dto.project.ProjectDto;
 import kr.co.daou.sdev.altong.dto.project.SmartPhoneDto;

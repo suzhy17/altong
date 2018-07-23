@@ -1,5 +1,6 @@
 package kr.co.daou.sdev.altong.domain.project;
 
+import kr.co.daou.sdev.altong.enumeration.SendType;
 import kr.co.daou.sdev.altong.exception.AltongException;
 import kr.co.daou.sdev.altong.util.CommonUtil;
 import lombok.Getter;

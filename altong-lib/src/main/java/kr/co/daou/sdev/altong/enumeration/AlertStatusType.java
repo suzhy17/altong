@@ -1,10 +1,10 @@
-package kr.co.daou.sdev.altong.domain.alert;
+package kr.co.daou.sdev.altong.enumeration;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 @Getter
-@AllArgsConstructor
+@RequiredArgsConstructor
 public enum AlertStatusType {
 	READY("1", "발송대기"),
 	ING("2", "발송중"),
@@ -14,6 +14,6 @@ public enum AlertStatusType {
 	ERROR("9","에러")
 	;
 
-	private String value;
-	private String name;
+	private final String value;
+	private final String name;
 }

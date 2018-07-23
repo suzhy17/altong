@@ -6,7 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import kr.co.daou.sdev.altong.domain.alert.AlertMaster;
-import kr.co.daou.sdev.altong.domain.alert.AlertStatusType;
+import kr.co.daou.sdev.altong.enumeration.AlertStatusType;
 import kr.co.daou.sdev.altong.dto.alert.AlertMasterDto;
 
 public interface AlertMasterService {

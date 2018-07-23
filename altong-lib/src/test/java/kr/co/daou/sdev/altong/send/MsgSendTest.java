@@ -10,7 +10,7 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import kr.co.daou.sdev.altong.LibApplication;
-import kr.co.daou.sdev.altong.domain.project.SendType;
+import kr.co.daou.sdev.altong.enumeration.SendType;
 import kr.co.daou.sdev.altong.domain.project.UnityMsgContents;
 import kr.co.daou.sdev.altong.service.MsgSendService;
 import lombok.extern.slf4j.Slf4j;

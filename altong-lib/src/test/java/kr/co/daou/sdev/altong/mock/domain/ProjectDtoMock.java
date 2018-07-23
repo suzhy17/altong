@@ -1,7 +1,7 @@
 package kr.co.daou.sdev.altong.mock.domain;
 
-import kr.co.daou.sdev.altong.domain.project.SendType;
-import kr.co.daou.sdev.altong.domain.project.SmartPhoneType;
+import kr.co.daou.sdev.altong.enumeration.SendType;
+import kr.co.daou.sdev.altong.enumeration.SmartPhoneType;
 import kr.co.daou.sdev.altong.dto.project.DaouServiceDto;
 import kr.co.daou.sdev.altong.dto.project.MemberDto;
 import kr.co.daou.sdev.altong.dto.project.ProjectDto;

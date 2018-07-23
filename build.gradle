@@ -27,7 +27,7 @@ subprojects {
     }
 
     dependencies {
-        compile('org.projectlombok:lombok:1.16.8')
+        compile('org.projectlombok:lombok:1.18.0')
         compile('org.apache.commons:commons-lang3:3.4')
     }
 

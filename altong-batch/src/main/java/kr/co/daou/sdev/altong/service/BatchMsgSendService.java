@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import kr.co.daou.sdev.altong.AltongConst;
 import kr.co.daou.sdev.altong.batch.send.MsgSendWorker;
 import kr.co.daou.sdev.altong.domain.alert.AlertMaster;
-import kr.co.daou.sdev.altong.domain.alert.AlertStatusType;
+import kr.co.daou.sdev.altong.enumeration.AlertStatusType;
 import kr.co.daou.sdev.altong.send.UnityMsg;
 import lombok.extern.slf4j.Slf4j;
 

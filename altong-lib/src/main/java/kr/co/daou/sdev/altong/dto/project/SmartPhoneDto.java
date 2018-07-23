@@ -1,6 +1,6 @@
 package kr.co.daou.sdev.altong.dto.project;
 
-import kr.co.daou.sdev.altong.domain.project.SmartPhoneType;
+import kr.co.daou.sdev.altong.enumeration.SmartPhoneType;
 import lombok.Data;
 
 @Data
