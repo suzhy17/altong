@@ -115,13 +115,9 @@ public class ApiController {
 			) {
 
 		log.info("프로젝트 리스트  Start !! ");
-		Page<Project> pageResult = null;
-		
-		Map<String, Object> resObj = new HashMap<>();
-		pageResult = projectService.getProjects(serviceId, pageable);
-		resObj.put("list", pageResult);
-		
-		return new JsonResult(resObj);
+		Page<Project> pageResult = projectService.getProjects(serviceId, pageable);
+
+		return new JsonResult().addResObj("list", pageResult);
 	}	
 	
 }
