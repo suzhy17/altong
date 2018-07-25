@@ -37,14 +37,14 @@
 							<label for="sendType">1차 발송 선택</label>
 							<select class="form-control" id="sendType" name="sendType">
 								<option value="">선택</option>
-								<option value="ems" th:each="sendType : ${T(kr.co.daou.sdev.altong.domain.project.SendType).values()}" th:value="${sendType}" th:text="${sendType.name}" th:selected="${project} ? ${sendType eq project.sendType}">안드로이드</option>
+								<option value="ems" th:each="sendType : ${T(kr.co.daou.sdev.altong.enumeration.SendType).values()}" th:value="${sendType}" th:text="${sendType.name}" th:selected="${project} ? ${sendType eq project.sendType}">안드로이드</option>
 							</select>
 						</div>
 						<div class="form-group">
 							<label for="sendType">2차 발송 선택</label>
 							<select class="form-control" id="resendType" name="resendType">
 								<option value="">선택</option>
-								<option value="ems" th:each="sendType : ${T(kr.co.daou.sdev.altong.domain.project.SendType).values()}" th:value="${sendType}" th:text="${sendType.name}" th:selected="${project} ? ${sendType eq project.resendType}">안드로이드</option>
+								<option value="ems" th:each="sendType : ${T(kr.co.daou.sdev.altong.enumeration.SendType).values()}" th:value="${sendType}" th:text="${sendType.name}" th:selected="${project} ? ${sendType eq project.resendType}">안드로이드</option>
 							</select>
 						</div>
 						<div class="form-group">
